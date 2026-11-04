@@ -1,0 +1,155 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/fraunces/full.css';
+@import '@fontsource-variable/fraunces/full-italic.css';
+@import '@fontsource-variable/instrument-sans/index.css';
+
+@theme {
+  --font-display: 'Fraunces Variable', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Instrument Sans Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --color-paper: #f6f2ea;
+  --color-paper-2: #ece6d8;
+  --color-card: #fdfbf6;
+  --color-ink: #12302e;
+  --color-ink-soft: #40605d;
+  --color-pine: #0f4c47;
+  --color-pine-deep: #0a2f2c;
+  --color-teal: #1a6f67;
+  --color-mist: #cfe3df;
+  --color-ember: #c8451f;
+  --color-ember-deep: #a93815;
+  --color-glow: #f6936f;
+  --color-line: #12302e24;
+
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-variation-settings: 'SOFT' 60, 'WONK' 0;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  a,
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-ember);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  ::selection {
+    background: var(--color-pine);
+    color: var(--color-paper);
+  }
+  img {
+    max-width: 100%;
+  }
+}
+
+@layer components {
+  .wrap {
+    width: 100%;
+    max-width: 88rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 48rem) {
+    .wrap {
+      padding-inline: 2.5rem;
+    }
+  }
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-teal);
+  }
+  .display-italic {
+    font-style: italic;
+    font-variation-settings: 'SOFT' 100, 'WONK' 1;
+  }
+  /* Faint drafting grid behind the equipment plates */
+  .drafting {
+    background-image:
+      linear-gradient(to right, #12302e0d 1px, transparent 1px),
+      linear-gradient(to bottom, #12302e0d 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  .field {
+    width: 100%;
+    min-height: 3.25rem;
+    border-radius: 0.75rem;
+    border: 1.5px solid #12302e59;
+    background: var(--color-card);
+    padding: 0.75rem 1rem;
+    font-size: 1.0625rem;
+    color: var(--color-ink);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .field:focus {
+    outline: none;
+    border-color: var(--color-pine);
+    box-shadow: 0 0 0 3px #1a6f6733;
+  }
+  .field[aria-invalid='true'] {
+    border-color: var(--color-ember);
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  animation: marquee 48s linear infinite;
+}
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.spin-slow {
+  animation: spin-slow 26s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track,
+  .spin-slow {
+    animation: none;
+  }
+}
