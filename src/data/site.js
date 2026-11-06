@@ -1,20 +1,18 @@
 /**
- * Everything the business needs to edit lives here.
+ * Everything the business needs to edit lives here, including the contact details
+ * used across the header, footer, contact page and product buttons.
  *
- * VERIFIED: `legalName`, `registry` and `address` come from the State of Utah
+ * `legalName`, `registry` and `address` come from the State of Utah
  * Certificate of Organization.
- *
- * PLACEHOLDER: `phone` and `email` are NOT real. Replace them before launch.
- * (555-01xx numbers and .example domains are reserved and never reach anyone.)
  */
 export const site = {
   name: 'Daud DME',
   legalName: 'Daud DME Ltd LLC',
   tagline: 'Durable medical equipment and supplies',
+  serviceArea: 'Serving Salt Lake City, Utah',
 
-  // PLACEHOLDER: replace before launch
-  phone: { display: '(801) 555-0100', href: 'tel:+18015550100' },
-  email: 'info@dauddme.example',
+  phone: { display: '(801) 554-5819', href: 'tel:+18015545819' },
+  email: 'Daudjamil54@gmail.com',
 
   // Set to a string such as 'Mon to Fri, 8am to 6pm' and it appears on the contact page and footer.
   hours: null,
@@ -40,9 +38,20 @@ export const site = {
   },
 }
 
+export const emailHref = `mailto:${site.email}`
+
+/** Email link with the product name already in the subject line. */
+export function quoteMailto(productName) {
+  const subject = `Quote request: ${productName}`
+  const body = `Hello Daud DME,\n\nI would like a quote for: ${productName}\n\nName:\nPhone:\nZIP code:\n\nThank you.`
+  return `${emailHref}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+}
+
+// `desktop: false` hides an item from the desktop header (the logo already links home).
 export const nav = [
-  { to: '/', label: 'Home' },
-  { to: '/equipment', label: 'Equipment' },
+  { to: '/', label: 'Home', desktop: false },
+  { to: '/products', label: 'Products' },
+  { to: '/equipment', label: 'Equipment guide' },
   { to: '/services', label: 'Services' },
   { to: '/about', label: 'About' },
   { to: '/faq', label: 'FAQ' },
