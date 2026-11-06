@@ -42,15 +42,15 @@ export default function About() {
         </div>
       </section>
 
-      <section className="bg-pine-deep py-20 text-paper md:py-32">
+      <section className="bg-pine-deep py-20 text-cream md:py-32">
         <div className="wrap">
-          <p className="eyebrow text-mist!">What you can hold us to</p>
+          <p className="eyebrow text-sage!">What you can hold us to</p>
           <div className="mt-8 grid gap-10 md:grid-cols-3 md:gap-12">
             {promises.map((p, i) => (
-              <Reveal key={p.title} delay={i * 0.1} className="border-t border-paper/25 pt-5">
+              <Reveal key={p.title} delay={i * 0.1} className="border-t border-cream/25 pt-5">
                 <p className="font-display text-xl italic text-glow">0{i + 1}</p>
                 <h2 className="mt-3 text-[clamp(2rem,3vw,2.5rem)]">{p.title}</h2>
-                <p className="mt-3 text-mist">{p.body}</p>
+                <p className="mt-3 text-sage">{p.body}</p>
               </Reveal>
             ))}
           </div>

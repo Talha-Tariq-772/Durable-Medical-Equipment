@@ -16,12 +16,70 @@
   --color-pine-deep: #0a2f2c;
   --color-teal: #1a6f67;
   --color-mist: #cfe3df;
-  --color-ember: #c8451f;
-  --color-ember-deep: #a93815;
+  --color-ember: #b03a17;
+  --color-ember-deep: #93300f;
   --color-glow: #f6936f;
   --color-line: #12302e24;
 
+  /* Theme-aware helpers */
+  --color-pine-ink: #0f4c47; /* green used as text or line art */
+  --color-on-ember: #ffffff; /* text on accent fills */
+  --color-rule: #d9d5ca; /* hairlines between ledger cells */
+  --color-photo: #f3efe7; /* well behind product photos */
+
+  /* Fixed colours for text on the always-dark green sections */
+  --color-cream: #f6f2ea;
+  --color-sage: #cfe3df;
+
+  --shadow-soft: 0 1px 2px rgb(18 48 46 / 0.06), 0 10px 28px -14px rgb(18 48 46 / 0.22);
+  --shadow-lift: 0 2px 4px rgb(18 48 46 / 0.06), 0 22px 44px -18px rgb(18 48 46 / 0.32);
+
   --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* `dark:` utilities follow the data-theme attribute set by the theme toggle. */
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+/* Dark theme: warm charcoal, not black. Every pair checked for WCAG AA. */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --color-paper: #161514;
+  --color-paper-2: #1e1c1a;
+  --color-card: #242220;
+  --color-ink: #eee8dc;
+  --color-ink-soft: #bab2a5;
+  --color-pine: #1d6058;
+  --color-pine-deep: #0c2826;
+  --color-teal: #82c8bc;
+  --color-mist: #1f3b37;
+  --color-ember: #ee7b55;
+  --color-ember-deep: #f4967a;
+  --color-line: #eee8dc24;
+  --color-pine-ink: #94d1c6;
+  --color-on-ember: #1c0f0a;
+  --color-rule: #35322e;
+  --color-photo: #ece7de;
+  --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.35), 0 10px 28px -14px rgb(0 0 0 / 0.6);
+  --shadow-lift: 0 2px 4px rgb(0 0 0 / 0.4), 0 24px 48px -18px rgb(0 0 0 / 0.75);
+}
+:root {
+  color-scheme: light;
+}
+
+/* Smooth colour change while switching themes (added briefly by the toggle). */
+@media (prefers-reduced-motion: no-preference) {
+  .theme-transition,
+  .theme-transition *,
+  .theme-transition *::before,
+  .theme-transition *::after {
+    transition:
+      background-color 0.35s ease,
+      color 0.35s ease,
+      border-color 0.35s ease,
+      fill 0.35s ease,
+      stroke 0.35s ease,
+      box-shadow 0.35s ease !important;
+  }
 }
 
 @layer base {
@@ -72,7 +130,7 @@
   }
   ::selection {
     background: var(--color-pine);
-    color: var(--color-paper);
+    color: var(--color-cream);
   }
   img {
     max-width: 100%;
@@ -106,15 +164,15 @@
   /* Faint drafting grid behind the equipment plates */
   .drafting {
     background-image:
-      linear-gradient(to right, #12302e0d 1px, transparent 1px),
-      linear-gradient(to bottom, #12302e0d 1px, transparent 1px);
+      linear-gradient(to right, color-mix(in srgb, var(--color-ink) 6%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in srgb, var(--color-ink) 6%, transparent) 1px, transparent 1px);
     background-size: 24px 24px;
   }
   .field {
     width: 100%;
     min-height: 3.25rem;
     border-radius: 0.75rem;
-    border: 1.5px solid #12302e59;
+    border: 1.5px solid color-mix(in srgb, var(--color-ink) 38%, transparent);
     background: var(--color-card);
     padding: 0.75rem 1rem;
     font-size: 1.0625rem;
@@ -124,7 +182,7 @@
   .field:focus {
     outline: none;
     border-color: var(--color-pine);
-    box-shadow: 0 0 0 3px #1a6f6733;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-teal) 25%, transparent);
   }
   .field[aria-invalid='true'] {
     border-color: var(--color-ember);

@@ -101,7 +101,7 @@ export function RequestDrawer() {
 
             {items.length === 0 ? (
               <div className="flex flex-1 flex-col items-center justify-center gap-5 px-8 text-center">
-                <EquipmentArt id="rollator" eager className="w-40 text-pine" />
+                <EquipmentArt id="rollator" eager className="w-40 text-pine-ink" />
                 <p className="text-lg text-ink-soft">
                   Nothing here yet. Add the equipment you are interested in and we can talk it through together.
                 </p>
@@ -118,7 +118,7 @@ export function RequestDrawer() {
                         exit={{ opacity: 0, x: 30 }}
                         className="flex items-center gap-4 py-4"
                       >
-                        <div className="drafting w-20 shrink-0 rounded-lg bg-card p-1.5 text-pine">
+                        <div className="drafting w-20 shrink-0 rounded-lg bg-card p-1.5 text-pine-ink">
                           <EquipmentArt id={item.id} eager />
                         </div>
                         <p className="min-w-0 flex-1 font-medium leading-snug">{item.name}</p>

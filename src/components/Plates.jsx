@@ -23,7 +23,7 @@ function AddButton({ item, compact = false }) {
         aria-pressed={added}
         aria-label={label}
         className={`relative z-10 grid size-12 shrink-0 place-items-center rounded-full border-[1.5px] transition-colors ${
-          added ? 'border-pine bg-pine text-paper' : 'border-ink/70 hover:bg-ink hover:text-paper'
+          added ? 'border-pine bg-pine text-cream' : 'border-ink/70 hover:bg-ink hover:text-paper'
         }`}
       >
         {added ? <Check aria-hidden="true" className="size-5" /> : <Plus aria-hidden="true" className="size-5" />}
@@ -52,7 +52,7 @@ function Plate({ item, onOpen }) {
         <span className="font-display italic text-ember">Plate {plateNo(item)}</span>
         <span className="text-ink-soft">{categoryLabel(item)}</span>
       </div>
-      <div className="drafting mx-5 mt-4 rounded-sm px-[8%] py-4 text-pine md:mx-6">
+      <div className="drafting mx-5 mt-4 rounded-sm px-[8%] py-4 text-pine-ink md:mx-6">
         <EquipmentArt id={item.id} className="mx-auto w-full max-w-xs transition-transform duration-500 ease-soft group-hover:scale-[1.04]" />
       </div>
       <div className="flex flex-1 items-end justify-between gap-4 p-5 md:p-6">
@@ -104,7 +104,7 @@ function PlateDialog({ item, onClose }) {
             >
               <X aria-hidden="true" className="size-6" />
             </button>
-            <div className="drafting flex items-center justify-center bg-card p-8 text-pine">
+            <div className="drafting flex items-center justify-center bg-card p-8 text-pine-ink">
               <EquipmentArt id={item.id} eager className="w-full max-w-[17rem] md:max-w-sm" />
             </div>
             <div className="p-6 md:p-9">
@@ -124,7 +124,7 @@ function PlateDialog({ item, onClose }) {
               </ul>
               {item.rx && (
                 <p className="mt-6 flex gap-3 rounded-xl bg-mist/60 p-4 text-[0.95rem] leading-snug">
-                  <FileSignature aria-hidden="true" className="mt-0.5 size-5 shrink-0 text-pine" />
+                  <FileSignature aria-hidden="true" className="mt-0.5 size-5 shrink-0 text-pine-ink" />
                   A prescription or provider’s order is usually needed. We can help you find out what is required.
                 </p>
               )}
@@ -145,7 +145,7 @@ export default function PlateGrid({ items }) {
   const close = useCallback(() => setActive(null), [])
   return (
     <>
-      <div className="grid gap-px overflow-hidden rounded-2xl border border-line bg-[#d9d5ca] sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-px overflow-hidden rounded-2xl border border-line bg-rule sm:grid-cols-2 lg:grid-cols-3">
         <AnimatePresence mode="popLayout" initial={false}>
           {items.map((item) => (
             <Plate key={item.id} item={item} onOpen={setActive} />

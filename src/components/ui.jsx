@@ -5,14 +5,14 @@ import { ArrowRight } from 'lucide-react'
 const EASE = [0.22, 1, 0.36, 1]
 
 const buttonStyles = {
-  primary: 'bg-ember text-white hover:bg-ember-deep',
+  primary: 'bg-ember text-on-ember shadow-soft hover:bg-ember-deep hover:shadow-lift',
   outline: 'border-[1.5px] border-ink/70 text-ink hover:bg-ink hover:text-paper',
-  light: 'bg-paper text-ink hover:bg-white',
-  outlineLight: 'border-[1.5px] border-paper/60 text-paper hover:bg-paper hover:text-ink',
+  light: 'bg-cream text-pine-deep shadow-soft hover:bg-white',
+  outlineLight: 'border-[1.5px] border-cream/60 text-cream hover:bg-cream hover:text-pine-deep',
 }
 
 const buttonBase =
-  'group inline-flex min-h-13 items-center justify-center gap-2.5 rounded-full px-7 py-3 text-center font-semibold transition-colors duration-200'
+  'group inline-flex min-h-13 items-center justify-center gap-2.5 rounded-full px-7 py-3 text-center font-semibold tracking-[0.005em] transition-[background-color,color,border-color,box-shadow,transform] duration-200 active:scale-[0.97]'
 
 /** Renders a router link (`to`), an external link (`href`) or a button. */
 export function Button({ to, href, variant = 'primary', icon = true, className = '', children, ...rest }) {
@@ -88,11 +88,11 @@ export function Logo({ light = false }) {
   return (
     <span className="inline-flex items-center gap-2.5">
       <svg viewBox="0 0 64 64" aria-hidden="true" className="size-10 shrink-0">
-        <rect width="64" height="64" rx="16" fill={light ? '#F6F2EA' : '#0F4C47'} />
-        <path d="M16 12h15c12 0 21 8.5 21 20s-9 20-21 20H16z" fill={light ? '#0F4C47' : '#F6F2EA'} />
+        <rect width="64" height="64" rx="16" fill={light ? 'var(--color-cream)' : 'var(--color-pine)'} />
+        <path d="M16 12h15c12 0 21 8.5 21 20s-9 20-21 20H16z" fill={light ? '#0F4C47' : 'var(--color-cream)'} />
         <path d="M27 23h7v6h6v7h-6v6h-7v-6h-6v-7h6z" fill={light ? '#F6936F' : '#C8451F'} />
       </svg>
-      <span className={`font-display text-[1.5rem] leading-none tracking-tight ${light ? 'text-paper' : 'text-ink'}`}>
+      <span className={`font-display text-[1.5rem] leading-none tracking-tight ${light ? 'text-cream' : 'text-ink'}`}>
         Daud <span className="display-italic">DME</span>
       </span>
     </span>
@@ -108,8 +108,8 @@ export function Seal({ className = '', dark = false }) {
         <defs>
           <path id="seal-circle" d="M100 100m-76 0a76 76 0 1 1 152 0a76 76 0 1 1-152 0" />
         </defs>
-        <circle cx="100" cy="100" r="99" fill={dark ? '#0A2F2C' : '#F6F2EA'} />
-        <text fill={dark ? '#F6F2EA' : '#12302E'} fontSize="16.5" fontWeight="600" letterSpacing="2.4" fontFamily="var(--font-sans)">
+        <circle cx="100" cy="100" r="99" fill={dark ? '#0A2F2C' : 'var(--color-paper)'} />
+        <text fill={dark ? '#F6F2EA' : 'var(--color-ink)'} fontSize="16.5" fontWeight="600" letterSpacing="2.4" fontFamily="var(--font-sans)">
           <textPath href="#seal-circle" textLength="472">{label}</textPath>
         </text>
       </svg>
@@ -183,12 +183,12 @@ export function SectionHead({ eyebrow, title, intro, light = false, className = 
   return (
     <div className={`max-w-3xl ${className}`}>
       <Reveal y={12}>
-        <p className={`eyebrow ${light ? 'text-mist!' : ''}`}>{eyebrow}</p>
+        <p className={`eyebrow ${light ? 'text-sage!' : ''}`}>{eyebrow}</p>
       </Reveal>
       <TextReveal parts={title} className="mt-4 text-[clamp(2.25rem,5.5vw,4.25rem)]" />
       {intro && (
         <Reveal delay={0.15}>
-          <p className={`mt-6 text-lg ${light ? 'text-mist' : 'text-ink-soft'}`}>{intro}</p>
+          <p className={`mt-6 text-lg ${light ? 'text-sage' : 'text-ink-soft'}`}>{intro}</p>
         </Reveal>
       )}
     </div>

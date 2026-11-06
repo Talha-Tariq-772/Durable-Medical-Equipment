@@ -16,12 +16,12 @@ export default function Services() {
       />
 
       <section className="wrap pb-20 md:pb-32">
-        <div className="grid gap-px overflow-hidden rounded-2xl border border-line bg-[#d9d5ca] sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-px overflow-hidden rounded-2xl border border-line bg-rule sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s, i) => {
             const Icon = icons[s.icon]
             return (
               <Reveal key={s.title} delay={i * 0.05} y={14} className="bg-paper p-6 md:p-8">
-                <span className="grid size-13 place-items-center rounded-full bg-mist text-pine">
+                <span className="grid size-13 place-items-center rounded-full bg-mist text-pine-ink">
                   <Icon aria-hidden="true" className="size-6" />
                 </span>
                 <h2 className="mt-5 text-[1.875rem]">{s.title}</h2>

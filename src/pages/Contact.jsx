@@ -95,7 +95,7 @@ export default function Contact() {
             <AnimatePresence mode="wait" initial={false}>
               {drafted ? (
                 <motion.div key="done" role="status" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
-                  <span className="grid size-16 place-items-center rounded-full bg-mist text-pine">
+                  <span className="grid size-16 place-items-center rounded-full bg-mist text-pine-ink">
                     <MailCheck aria-hidden="true" className="size-8" />
                   </span>
                   <h2 className="mt-5 text-4xl">One last step: press send.</h2>
@@ -178,25 +178,25 @@ export default function Contact() {
             <ul className="space-y-1">
               <li>
                 <a href={site.phone.href} className="group flex items-center gap-4 rounded-2xl p-3 transition-colors hover:bg-paper-2">
-                  <span className="grid size-13 shrink-0 place-items-center rounded-full bg-pine text-paper"><Phone aria-hidden="true" className="size-5" /></span>
+                  <span className="grid size-13 shrink-0 place-items-center rounded-full bg-pine text-cream"><Phone aria-hidden="true" className="size-5" /></span>
                   <span><span className="block text-sm text-ink-soft">Call</span><span className="font-display text-2xl">{site.phone.display}</span></span>
                 </a>
               </li>
               <li>
                 <a href={`mailto:${site.email}`} className="group flex items-center gap-4 rounded-2xl p-3 transition-colors hover:bg-paper-2">
-                  <span className="grid size-13 shrink-0 place-items-center rounded-full bg-pine text-paper"><Mail aria-hidden="true" className="size-5" /></span>
+                  <span className="grid size-13 shrink-0 place-items-center rounded-full bg-pine text-cream"><Mail aria-hidden="true" className="size-5" /></span>
                   <span className="min-w-0"><span className="block text-sm text-ink-soft">Email</span><span className="block break-all text-lg font-medium">{site.email}</span></span>
                 </a>
               </li>
               <li>
                 <a href={site.mapsUrl} target="_blank" rel="noreferrer" className="group flex items-center gap-4 rounded-2xl p-3 transition-colors hover:bg-paper-2">
-                  <span className="grid size-13 shrink-0 place-items-center rounded-full bg-pine text-paper"><MapPin aria-hidden="true" className="size-5" /></span>
+                  <span className="grid size-13 shrink-0 place-items-center rounded-full bg-pine text-cream"><MapPin aria-hidden="true" className="size-5" /></span>
                   <span><span className="block text-sm text-ink-soft">Office</span><span className="text-lg font-medium">{address.street}, {address.city}, {address.state} {address.zip}</span></span>
                 </a>
               </li>
               {site.hours && (
                 <li className="flex items-center gap-4 p-3">
-                  <span className="grid size-13 shrink-0 place-items-center rounded-full bg-pine text-paper"><Clock aria-hidden="true" className="size-5" /></span>
+                  <span className="grid size-13 shrink-0 place-items-center rounded-full bg-pine text-cream"><Clock aria-hidden="true" className="size-5" /></span>
                   <span><span className="block text-sm text-ink-soft">Hours</span><span className="text-lg font-medium">{site.hours}</span></span>
                 </li>
               )}
@@ -208,7 +208,7 @@ export default function Contact() {
               src={site.mapsEmbed}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              className="aspect-[4/3] w-full rounded-2xl border-0 bg-paper-2 grayscale-[35%]"
+              className="aspect-[4/3] w-full rounded-2xl border-0 bg-paper-2 grayscale-[35%] dark:brightness-[0.85] dark:grayscale-[60%]"
             />
           </Reveal>
           <Reveal delay={0.25}>

@@ -6,7 +6,7 @@ import { Logo, PulseLine } from './ui.jsx'
 export default function Footer() {
   const { address, registry } = site
   return (
-    <footer className="bg-pine-deep pb-24 text-paper lg:pb-0">
+    <footer className="bg-pine-deep pb-24 text-cream lg:pb-0">
       <PulseLine className="h-20 w-full md:h-28" color="#F6936F" />
       <div className="wrap grid gap-12 py-12 md:grid-cols-2 lg:grid-cols-12 lg:py-16">
         <div className="lg:col-span-5">
@@ -17,7 +17,7 @@ export default function Footer() {
         </div>
 
         <nav aria-label="Footer" className="lg:col-span-3">
-          <h2 className="eyebrow text-mist!">Explore</h2>
+          <h2 className="eyebrow text-sage!">Explore</h2>
           <ul className="mt-4 grid grid-cols-2 gap-x-4 md:grid-cols-1">
             {nav.map((item) => (
               <li key={item.to}>
@@ -28,7 +28,7 @@ export default function Footer() {
         </nav>
 
         <div className="md:col-span-2 lg:col-span-4">
-          <h2 className="eyebrow text-mist!">Reach us</h2>
+          <h2 className="eyebrow text-sage!">Reach us</h2>
           <ul className="mt-4 space-y-1">
             <li>
               <a href={site.phone.href} className="flex items-center gap-3 py-1.5 underline-offset-4 hover:underline">
@@ -53,10 +53,10 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-paper/15">
-        <div className="wrap space-y-3 py-6 text-sm text-mist">
+      <div className="border-t border-cream/15">
+        <div className="wrap space-y-3 py-6 text-sm text-sage">
           <p>
-            <strong className="font-semibold text-paper">If this is a medical emergency, call 911.</strong>{' '}
+            <strong className="font-semibold text-cream">If this is a medical emergency, call 911.</strong>{' '}
             Information on this site is general and is not medical advice. Talk to your healthcare provider about what is right for you.
           </p>
           <p>
