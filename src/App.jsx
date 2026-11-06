@@ -7,6 +7,8 @@ import MobileBar from './components/MobileBar.jsx'
 import { RequestDrawer } from './components/RequestList.jsx'
 import Home from './pages/Home.jsx'
 import Equipment from './pages/Equipment.jsx'
+import Products from './pages/Products.jsx'
+import ProductDetail from './pages/ProductDetail.jsx'
 import Services from './pages/Services.jsx'
 import About from './pages/About.jsx'
 import Faq from './pages/Faq.jsx'
@@ -27,7 +29,7 @@ export default function App() {
     <>
       <a
         href="#main"
-        className="fixed left-4 top-4 z-[100] -translate-y-24 rounded-full bg-pine px-5 py-3 text-paper focus:translate-y-0"
+        className="fixed left-4 top-4 z-[100] -translate-y-24 rounded-full bg-pine px-5 py-3 text-cream focus:translate-y-0"
       >
         Skip to content
       </a>
@@ -43,6 +45,8 @@ export default function App() {
           >
             <Routes location={location}>
               <Route path="/" element={<Home />} />
+              <Route path="/products" element={<Products />} />
+              <Route path="/products/:slug" element={<ProductDetail />} />
               <Route path="/equipment" element={<Equipment />} />
               <Route path="/services" element={<Services />} />
               <Route path="/about" element={<About />} />

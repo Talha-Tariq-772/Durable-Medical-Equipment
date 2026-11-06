@@ -1,9 +1,37 @@
 import { useRef, useState } from 'react'
 import { AnimatePresence, motion, useScroll, useSpring, useTransform } from 'framer-motion'
-import { Check, ExternalLink, Minus, Plus } from 'lucide-react'
+import { Check, ExternalLink, Mail, Minus, Plus, Search, Truck } from 'lucide-react'
 import { audiences, faqs, pillars, steps } from '../data/content.js'
 import { site } from '../data/site.js'
 import { Button, Reveal, SectionHead, Seal, TextReveal } from './ui.jsx'
+
+/* ------------------------------------------------------------------ */
+/* How to order: Browse → Request a quote → Delivery                   */
+/* ------------------------------------------------------------------ */
+const orderSteps = [
+  { icon: Search, title: 'Browse', body: 'Find the equipment you need and check its estimated price range.' },
+  { icon: Mail, title: 'Request a quote', body: `Email us or call ${site.phone.display}. We confirm the model, price and any prescription needed.` },
+  { icon: Truck, title: 'Delivery', body: 'We arrange delivery to your home or facility and help you get set up.' },
+]
+
+export function OrderSteps({ className = '' }) {
+  return (
+    <ol className={`grid gap-4 md:grid-cols-3 md:gap-6 ${className}`}>
+      {orderSteps.map(({ icon: Icon, title, body }, i) => (
+        <Reveal as="li" key={title} delay={i * 0.08} className="relative rounded-[1.25rem] bg-paper p-6 ring-1 ring-line md:p-7">
+          <div className="flex items-center gap-3">
+            <span className="grid size-12 place-items-center rounded-full bg-pine text-cream">
+              <Icon aria-hidden="true" className="size-5" />
+            </span>
+            <span className="font-display text-lg italic text-ember">Step {i + 1}</span>
+          </div>
+          <h3 className="mt-5 text-[1.75rem]">{title}</h3>
+          <p className="mt-2 text-ink-soft">{body}</p>
+        </Reveal>
+      ))}
+    </ol>
+  )
+}
 
 /* ------------------------------------------------------------------ */
 /* Four pillars: sticky image that follows the text on large screens   */
@@ -115,7 +143,7 @@ export function Process() {
               i % 2 === 0 ? 'md:pr-20 md:text-right' : 'md:ml-auto md:pl-20'
             }`}
           >
-            <span className="absolute left-0 top-0 grid size-10 place-items-center rounded-full bg-pine font-display text-lg text-paper md:hidden">
+            <span className="absolute left-0 top-0 grid size-10 place-items-center rounded-full bg-pine font-display text-lg text-cream md:hidden">
               {i + 1}
             </span>
             <Reveal className="w-full">
@@ -275,7 +303,7 @@ export function FaqList({ limit }) {
                 className="flex min-h-16 w-full items-center justify-between gap-5 py-4 text-left font-display text-[clamp(1.375rem,2.4vw,1.875rem)] leading-tight transition-colors hover:text-teal"
               >
                 {f.q}
-                <span className={`grid size-11 shrink-0 place-items-center rounded-full border-[1.5px] transition-colors ${isOpen ? 'border-pine bg-pine text-paper' : 'border-ink/50'}`}>
+                <span className={`grid size-11 shrink-0 place-items-center rounded-full border-[1.5px] transition-colors ${isOpen ? 'border-pine bg-pine text-cream' : 'border-ink/50'}`}>
                   {isOpen ? <Minus aria-hidden="true" className="size-5" /> : <Plus aria-hidden="true" className="size-5" />}
                 </span>
               </button>
@@ -309,14 +337,14 @@ export function FaqList({ limit }) {
 export function ClosingCta() {
   return (
     <section className="wrap py-16 md:py-24">
-      <div className="relative grid overflow-hidden rounded-[2rem] bg-pine text-paper md:grid-cols-[7fr_5fr]">
+      <div className="relative grid overflow-hidden rounded-[2rem] bg-pine text-cream md:grid-cols-[7fr_5fr]">
         <div className="relative z-10 p-7 py-12 md:p-14 lg:p-20">
           <TextReveal
             parts={['Tell us what', { text: 'care', italic: true, className: 'text-glow!' }, 'needs next.']}
             className="text-[clamp(2.75rem,6vw,5.5rem)]"
           />
           <Reveal delay={0.2}>
-            <p className="mt-6 max-w-lg text-lg text-mist">
+            <p className="mt-6 max-w-lg text-lg text-sage">
               Whether you are planning for a parent’s homecoming or stocking a clinic, a conversation is the right place to start.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">

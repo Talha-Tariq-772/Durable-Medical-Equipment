@@ -2,14 +2,48 @@ import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { promises } from '../data/content.js'
 import { equipment } from '../data/equipment.js'
+import { featuredProductSlugs, getProduct, products } from '../data/products.js'
 import { site } from '../data/site.js'
 import PlateGrid from '../components/Plates.jsx'
+import ProductCard from '../components/ProductCard.jsx'
 import { AudienceCards, Certificate, ClosingCta, FaqList, Pillars, Process } from '../components/Sections.jsx'
 import { Button, Marquee, PulseLine, Reveal, SectionHead, Seal, TextReveal } from '../components/ui.jsx'
 
 const featured = ['wheelchair', 'hospital-bed', 'oxygen', 'rollator', 'cpap', 'shower-chair'].map((id) =>
   equipment.find((e) => e.id === id),
 )
+const featuredProducts = featuredProductSlugs.map(getProduct)
+
+function FeaturedProducts() {
+  return (
+    <section className="bg-paper-2 py-20 md:py-32">
+      <div className="wrap">
+        <div className="mb-10 flex flex-col justify-between gap-6 md:mb-14 md:flex-row md:items-end">
+          <SectionHead
+            eyebrow="Featured products"
+            title={['Ready when', { text: 'you', italic: true }, 'are.']}
+            intro="Some of the equipment patients and care teams ask for most, with estimated price ranges. Request a quote by email or call to order."
+          />
+          <Reveal className="shrink-0">
+            <Button to="/products" variant="outline">Browse all {products.length} products</Button>
+          </Reveal>
+        </div>
+        <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:gap-6">
+          {featuredProducts.map((p, i) => (
+            <Reveal as="li" key={p.slug} delay={(i % 3) * 0.08} y={20}>
+              <ProductCard product={p} />
+            </Reveal>
+          ))}
+        </ul>
+        <Reveal>
+          <p className="mt-8 text-sm text-ink-soft">
+            Prices are estimated ranges and vary by brand, model and features. Prescription-required items need a valid prescription from a licensed provider.
+          </p>
+        </Reveal>
+      </div>
+    </section>
+  )
+}
 
 function Hero() {
   const ref = useRef(null)
@@ -18,7 +52,7 @@ function Hero() {
   const circleY = useTransform(scrollYProgress, [0, 1], [0, -70])
 
   return (
-    <section ref={ref} className="relative overflow-x-clip pt-28 md:pt-36 lg:pt-32">
+    <section ref={ref} className="relative overflow-x-clip pt-28 md:pt-48 lg:pt-44">
       <div className="wrap grid items-center gap-x-10 gap-y-12 lg:grid-cols-12">
         <div className="lg:col-span-7">
           <motion.p initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="eyebrow">
@@ -40,7 +74,7 @@ function Hero() {
               Daud DME supplies high-quality medical equipment and supplies to patients, hospitals, clinics and healthcare providers, to support care, recovery, mobility and daily living.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button to="/equipment">Explore the equipment</Button>
+              <Button to="/products">Browse products</Button>
               <Button href={site.phone.href} variant="outline" icon={false}>Call {site.phone.display}</Button>
             </div>
           </motion.div>
@@ -75,7 +109,7 @@ function Hero() {
           <Seal className="absolute -right-2 top-[6%] size-24 sm:-right-6 sm:size-32" />
         </motion.div>
       </div>
-      <PulseLine className="mt-10 h-20 w-full text-pine md:mt-6 md:h-28" />
+      <PulseLine className="mt-10 h-20 w-full text-pine-ink md:mt-6 md:h-28" />
     </section>
   )
 }
@@ -95,10 +129,10 @@ function CorridorBand() {
       />
       <div className="absolute inset-0 bg-gradient-to-t from-pine-deep via-pine-deep/50 to-pine-deep/10" />
       <div className="wrap relative pb-10 pt-32 md:pb-16">
-        <p className="eyebrow text-mist!">Who we serve</p>
+        <p className="eyebrow text-sage!">Who we serve</p>
         <TextReveal
           parts={['One standard of care, from the', { text: 'ward', italic: true, className: 'text-glow!' }, 'to the', { text: 'living room.', italic: true, className: 'text-glow!' }]}
-          className="mt-4 max-w-4xl text-[clamp(2.5rem,6.4vw,5.5rem)] text-paper"
+          className="mt-4 max-w-4xl text-[clamp(2.5rem,6.4vw,5.5rem)] text-cream"
         />
       </div>
     </div>
@@ -112,8 +146,10 @@ export default function Home() {
 
       <Marquee
         items={['Wheelchairs', 'Hospital beds', 'Oxygen concentrators', 'Rollators', 'CPAP', 'Patient lifts', 'Shower chairs', 'Nebulizers', 'Everyday supplies']}
-        className="border-y border-line py-4 font-display text-[clamp(1.75rem,4vw,3rem)] italic text-pine md:py-5"
+        className="border-y border-line py-4 font-display text-[clamp(1.75rem,4vw,3rem)] italic text-pine-ink md:py-5"
       />
+
+      <FeaturedProducts />
 
       <section className="wrap py-20 md:py-32">
         <SectionHead
@@ -128,12 +164,12 @@ export default function Home() {
         <div className="wrap">
           <div className="mb-10 flex flex-col justify-between gap-6 md:mb-14 md:flex-row md:items-end">
             <SectionHead
-              eyebrow="The catalogue"
+              eyebrow="Equipment guide"
               title={['Built for', { text: 'everyday', italic: true }, 'use.']}
-              intro="A look at some of the equipment we supply. Open any plate for details, or add it to your list to talk it over with us."
+              intro="New to medical equipment? Open any plate to see what it does and who it helps, or add it to your list to talk it over with us."
             />
             <Reveal className="shrink-0">
-              <Button to="/equipment" variant="outline">See all {equipment.length} plates</Button>
+              <Button to="/equipment" variant="outline">Open the equipment guide</Button>
             </Reveal>
           </div>
           <PlateGrid items={featured} />

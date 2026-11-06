@@ -26,9 +26,9 @@ export default function Equipment() {
 
   return (
     <>
-      <title>Equipment | Daud DME</title>
+      <title>Equipment guide | Daud DME</title>
       <PageHero
-        eyebrow="The catalogue"
+        eyebrow="Equipment guide"
         title={['Every plate, a piece of', { text: 'someone’s day.', italic: true }]}
         intro="Browse the equipment and supplies we provide. Availability and models vary, so add what interests you to your list and we will talk through the best fit."
       />
@@ -45,7 +45,7 @@ export default function Equipment() {
                   aria-pressed={active}
                   onClick={() => choose(c.id)}
                   className={`relative min-h-12 rounded-full border-[1.5px] px-5 font-medium transition-colors ${
-                    active ? 'border-pine text-paper' : 'border-ink/30 hover:border-ink'
+                    active ? 'border-pine text-cream' : 'border-ink/30 hover:border-ink'
                   }`}
                 >
                   {active && (
